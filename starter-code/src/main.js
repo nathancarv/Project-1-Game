@@ -47,6 +47,8 @@ $('.back').on('click', function () {
         } else {
           turnBackCards(); //got it wrong 
         }
+        console.log(memoryGame) //whether its' right or wrong you have all ur data in here 
+        //$('#pairs_clicked').html(memoryGame.pairsClicked)
       }
       printGameInfo();
       if (memoryGame.isFinished()) { alert('You wooon!!!'); }
@@ -55,13 +57,25 @@ $('.back').on('click', function () {
 
   // Bind the click event of each element to a function
   function turnBackCards() {
+ 
     setTimeout(function () {
-      memoryGame.pickedCards[0].style.background = '#456783';
-      memoryGame.pickedCards[1].style.background = '#456783';
+      //memoryGame.pickedCards[1].style.background = 'red';
+      //memoryGame.pickedCards[0].style.background = '#456783';
+      //memoryGame.pickedCards[1].style.background = '#456783';
+      memoryGame.pickedCards[0].classList.add('wrong')
+      memoryGame.pickedCards[1].classList.add('wrong')
+      //$('#whteverid') .toggleClass() or .addClass() or .removeClass('active)
       memoryGame.pickedCards[0].classList.remove('active');
       memoryGame.pickedCards[1].classList.remove('active');
-      prepareNextTurn();
-    }, 1000);
+
+      setTimeout(function(){
+
+        memoryGame.pickedCards[0].classList.remove('wrong')
+        memoryGame.pickedCards[1].classList.remove('wrong')
+        prepareNextTurn();
+
+      },600)
+    }, 600);
   }
   
   function prepareNextTurn() {

@@ -58,6 +58,21 @@ html {
   opacity: 1;
 }
 
+.card .wrong {
+  animation: toggleWrong .2s 3;
+  transform: rotate(0deg);
+}
+
+@keyframes toggleWrong{
+  50%{
+      background:red;
+  }
+  100%{
+    background:inital;
+    /* transform: rotate(180deg); */
+}
+}
+
 #score {
   background-color: rgba(215, 44, 44, 0.8);;
   border-radius: 8px;

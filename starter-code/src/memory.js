@@ -6,6 +6,7 @@ class MemoryGame {
     this.pairsGuessed = 0;
     this.pickedCards = [];
     this.cards = this.shuffleCards(cards);
+    this.wrong = 0; 
   }
   shuffleCards() {
     console.log("starting to shuffle cards", this.cards)
@@ -32,6 +33,8 @@ class MemoryGame {
       console.log('checkpair',this.pickedCards,cards1, cards2)
       if (cards1 === cards2){
         this.pairsGuessed++;
+      } else{
+      this.wrong++;
       }
       return cards1 === cards2;
   }
