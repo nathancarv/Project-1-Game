@@ -17,6 +17,8 @@ var cards = [
   { name: 'tree',            img: '<i class="fas fa-tree"></i>' },
 ];
 
+var counter = 0
+
 var memoryGame = new MemoryGame(cards);
 
 //document.addEventListener("DOMContentLoaded", function(event) { 
@@ -43,6 +45,11 @@ $('.back').on('click', function () {
         window.c = memoryGame.pickedCards[0] 
         console.log('here', cards1, cards2, '????')
         if(memoryGame.checkIfPair(cards1, cards2)) { //true if correct else false
+          counter++
+
+          console.log(counter)
+          document.getElementById('moves').innerHTML = counter;
+
           prepareNextTurn(); //got it right
         } else {
           turnBackCards(); //got it wrong 
@@ -51,7 +58,12 @@ $('.back').on('click', function () {
         //$('#pairs_clicked').html(memoryGame.pairsClicked)
       }
       printGameInfo();
-      if (memoryGame.isFinished()) { alert('You wooon!!!'); }
+      if (memoryGame.isFinished()) { 
+        alert('Congratulations You wooon!!!'); 
+        location.reload();
+
+      
+      }
     }
 });
 
@@ -67,6 +79,11 @@ $('.back').on('click', function () {
       //$('#whteverid') .toggleClass() or .addClass() or .removeClass('active)
       memoryGame.pickedCards[0].classList.remove('active');
       memoryGame.pickedCards[1].classList.remove('active');
+
+      counter++
+      console.log(counter)
+      document.getElementById('moves').innerHTML = counter;
+
 
       setTimeout(function(){
 
@@ -84,12 +101,14 @@ $('.back').on('click', function () {
   }
   
   function printGameInfo() {
-    document.getElementById('pairs_clicked').innerHTML = memoryGame.pairsClicked;
+    document.getElementById('moves').innerHTML = counter;
     document.getElementById('pairs_guessed').innerHTML = memoryGame.pairsGuessed;
   }
+
   
   function displayClickedCard(cards) {
     console.log(cards)
     cards.className += ' active';
     // cards.style.background = 'url(img/' + cards.getAttribute('name') + ') no-repeat';
   }
+
