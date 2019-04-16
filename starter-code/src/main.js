@@ -46,7 +46,12 @@ $('.back').on('click', function () {
         console.log('here', cards1, cards2, '????')
         if(memoryGame.checkIfPair(cards1, cards2)) { //true if correct else false
           counter--
-
+          if(counter < 1) {
+            setTimeout(() => {
+              alert("Game over... Better luck next time... Champ");
+              location.reload();
+            },100)
+          }
           console.log(counter)
           document.getElementById('moves').innerHTML = counter;
 
@@ -59,7 +64,7 @@ $('.back').on('click', function () {
       }
       printGameInfo();
       if (memoryGame.isFinished()) { 
-        alert('Congratulations You Won!!!'); 
+        alert('Congratulations You Won with '+ counter +' Moves to Spare!!'); 
         location.reload();
 
       
@@ -81,15 +86,16 @@ $('.back').on('click', function () {
       memoryGame.pickedCards[1].classList.remove('active');
 
       counter--
+      
       console.log(counter)
       document.getElementById('moves').innerHTML = counter;
-
       if(counter < 1) {
         setTimeout(() => {
-          alert("GAME OVER !!!!!!");
+          alert("Game over... Better luck next time... Champ");
           location.reload();
         },100)
-      } else {
+      }
+       else {
         setTimeout(function(){
   
           memoryGame.pickedCards[0].classList.remove('wrong')
