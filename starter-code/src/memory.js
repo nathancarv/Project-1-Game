@@ -34,7 +34,7 @@ class MemoryGame {
       if (cards1 === cards2){
         this.pairsGuessed++;
       } else{
-      this.wrong--;
+      this.wrong++;
       }
       return cards1 === cards2;
   }
