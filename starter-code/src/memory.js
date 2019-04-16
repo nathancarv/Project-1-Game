@@ -29,7 +29,7 @@ class MemoryGame {
   return copy;
   }
   checkIfPair(cards1, cards2) {
-    for (let counter = 18; counter >= moves; counter--)
+    for (let counter = 4; counter <= moves; counter--)
       console.log('checkpair',this.pickedCards,cards1, cards2)
       if (cards1 === cards2){
         this.pairsGuessed++;

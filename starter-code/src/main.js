@@ -84,7 +84,7 @@ $('.back').on('click', function () {
       console.log(counter)
       document.getElementById('moves').innerHTML = counter;
 
-      if(counter === 0) {
+      if(counter < 1) {
         setTimeout(() => {
           alert("GAME OVER !!!!!!");
           location.reload();
