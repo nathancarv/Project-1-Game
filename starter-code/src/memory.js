@@ -2,7 +2,7 @@
 class MemoryGame {
   constructor(cards){
     this.cards = cards;
-    this.pairsClicked = 0;
+    this.moves = 0;
     this.pairsGuessed = 0;
     this.pickedCards = [];
     this.cards = this.shuffleCards(cards);
@@ -29,12 +29,12 @@ class MemoryGame {
   return copy;
   }
   checkIfPair(cards1, cards2) {
-
+    for (let counter = 18; counter >= moves; counter--)
       console.log('checkpair',this.pickedCards,cards1, cards2)
       if (cards1 === cards2){
         this.pairsGuessed++;
       } else{
-      this.wrong++;
+      this.wrong--;
       }
       return cards1 === cards2;
   }

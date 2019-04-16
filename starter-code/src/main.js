@@ -17,7 +17,7 @@ var cards = [
   { name: 'tree',            img: '<i class="fas fa-tree"></i>' },
 ];
 
-var counter = 0
+var counter = 18
 
 var memoryGame = new MemoryGame(cards);
 
@@ -45,7 +45,7 @@ $('.back').on('click', function () {
         window.c = memoryGame.pickedCards[0] 
         console.log('here', cards1, cards2, '????')
         if(memoryGame.checkIfPair(cards1, cards2)) { //true if correct else false
-          counter++
+          counter--
 
           console.log(counter)
           document.getElementById('moves').innerHTML = counter;
@@ -59,7 +59,7 @@ $('.back').on('click', function () {
       }
       printGameInfo();
       if (memoryGame.isFinished()) { 
-        alert('Congratulations You wooon!!!'); 
+        alert('Congratulations You Won!!!'); 
         location.reload();
 
       
@@ -80,18 +80,25 @@ $('.back').on('click', function () {
       memoryGame.pickedCards[0].classList.remove('active');
       memoryGame.pickedCards[1].classList.remove('active');
 
-      counter++
+      counter--
       console.log(counter)
       document.getElementById('moves').innerHTML = counter;
 
+      if(counter === 0) {
+        setTimeout(() => {
+          alert("GAME OVER !!!!!!");
+          location.reload();
+        },100)
+      } else {
+        setTimeout(function(){
+  
+          memoryGame.pickedCards[0].classList.remove('wrong')
+          memoryGame.pickedCards[1].classList.remove('wrong')
+          prepareNextTurn();
+  
+        },600)
+      }
 
-      setTimeout(function(){
-
-        memoryGame.pickedCards[0].classList.remove('wrong')
-        memoryGame.pickedCards[1].classList.remove('wrong')
-        prepareNextTurn();
-
-      },600)
     }, 600);
   }
   
@@ -111,4 +118,5 @@ $('.back').on('click', function () {
     cards.className += ' active';
     // cards.style.background = 'url(img/' + cards.getAttribute('name') + ') no-repeat';
   }
+
 
