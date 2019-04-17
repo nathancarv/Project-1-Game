@@ -29,11 +29,12 @@ var memoryGame = new MemoryGame(cards);
     html += '  <div class="front"></div>'; /* style="background: url(img/'+ pic.img +') no-repeat"*/
     html += '</div>';
   });
-
   // Add all the div's to the HTML
   document.getElementById('memory_board').innerHTML = html;
   // Bind the click event of each element to a function
-$('.back').on('click', function () {
+$('.back').on('click', function () { 
+    let flippingNoise = new Audio("../audio/coin.mp3")
+    flippingNoise.play();
     if (!this.classList.contains('active')) {
       memoryGame.pickedCards.push(this);
       console.log('hi')
@@ -64,10 +65,11 @@ $('.back').on('click', function () {
       }
       printGameInfo();
       if (memoryGame.isFinished()) { 
-        alert('Congratulations You Won with '+ counter +' Moves to Spare!!'); 
-        location.reload();
-
-      
+        setTimeout(() =>{
+          alert('Congratulations You Won with '+ counter +' Moves to Spare!!'); 
+          location.reload();
+        }, 100)
+        
       }
     }
 });
@@ -124,5 +126,4 @@ $('.back').on('click', function () {
     cards.className += ' active';
     // cards.style.background = 'url(img/' + cards.getAttribute('name') + ') no-repeat';
   }
-
 
