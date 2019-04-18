@@ -32,8 +32,12 @@ class MemoryGame {
       console.log('checkpair',this.pickedCards,cards1, cards2)
       if (cards1 === cards2){
         this.pairsGuessed++;
+        let ding = new Audio("../audio/ding.mp3")
+        ding.play();
       } else{
-      this.wrong++;
+        this.wrong++;
+        let wrongSound = new Audio("../audio/wrongsound.mp3")
+        wrongSound.play();
       }
       return cards1 === cards2;
   }

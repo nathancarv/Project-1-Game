@@ -21,7 +21,6 @@ var counter = 18
 
 var memoryGame = new MemoryGame(cards);
 
-//document.addEventListener("DOMContentLoaded", function(event) { 
   var html = '';
   memoryGame.cards.forEach(function (pic) {
     html += '<div class="card" data-card-name="'+ pic.name +'">';
