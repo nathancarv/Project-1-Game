@@ -7,7 +7,7 @@ html {
 #memory_board {
   background:linear-gradient(160deg, #02CCBA 0%, #AA7ECD 100%);
 	width:570px;
-	height:490px;
+	/*height:490px;*/
   padding:70px;
   padding-left: 110px;
 	margin:0px auto;
@@ -17,6 +17,9 @@ html {
   box-shadow: inset 0px 0px 20px -6px rgba(97,89,97,1);
 }
 
+.card{
+  display: inline-block;
+}
 .card .back{
   transition: all .5s;
   transform: rotateY(180deg);
@@ -82,8 +85,9 @@ html {
   padding: 20px;
   padding-top: 0;
   margin-left: 80%;
-  height: 110px;
-  font-size: 18px
+  height: 140px;
+  font-size: 18px;
+  position:fixed;
 }
 
 .container {

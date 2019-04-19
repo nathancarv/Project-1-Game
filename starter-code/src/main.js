@@ -1,3 +1,6 @@
+var counter = 18
+
+function xperi(){
 var cards = [
   { name: 'binoculars',      img: '<i class="fas fa-binoculars"></i>' },
   { name: 'campground',      img: '<i class="fas fa-campground"></i>' },
@@ -17,8 +20,7 @@ var cards = [
   { name: 'tree',            img: '<i class="fas fa-tree"></i>' },
 ];
 
-var counter = 18
-
+var timesWon = 1; 
 var memoryGame = new MemoryGame(cards);
 
   var html = '';
@@ -29,7 +31,7 @@ var memoryGame = new MemoryGame(cards);
     html += '</div>';
   });
   // Add all the div's to the HTML
-  document.getElementById('memory_board').innerHTML = html;
+  document.getElementById('memory_board').innerHTML += html;
   // Bind the click event of each element to a function
 $('.back').on('click', function () { 
     let flippingNoise = new Audio("../audio/coin.mp3")
@@ -48,6 +50,7 @@ $('.back').on('click', function () {
           counter--
           if(counter < 1) {
             setTimeout(() => {
+              $('.back').addClass('active')
               alert("Game over... Better luck next time... Champ");
               location.reload();
             },100)
@@ -66,7 +69,12 @@ $('.back').on('click', function () {
       if (memoryGame.isFinished()) { 
         setTimeout(() =>{
           alert('Congratulations You Won with '+ counter +' Moves to Spare!!'); 
-          location.reload();
+          //location.reload();
+          timesWon++;
+          for(let x=0; x<timesWon; x++){
+            xperi()
+            counter += 10 
+          }
         }, 100)
         
       }
@@ -126,3 +134,5 @@ $('.back').on('click', function () {
     // cards.style.background = 'url(img/' + cards.getAttribute('name') + ') no-repeat';
   }
 
+}
+xperi()
