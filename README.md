@@ -1,5 +1,5 @@
 ![Ironhack Logo](https://i.imgur.com/1QgrNNw.png)
-# JS | Memory Game
+# JS | Memory Game 
 
 ## Learning Goals
 
